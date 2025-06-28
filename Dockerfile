@@ -46,6 +46,8 @@ COPY ./ depoco/
 # Install depoco and 3rdparty dependencies
 RUN cd depoco/ && pip3 install -U -e .
 RUN cd depoco/submodules/octree_handler && pip3 install -U .
-RUN cd depoco/submodules/ChamferDistancePytorch/chamfer3D/ && pip3 install -U .
+
+RUN git clone https://github.com/chrdiller/ChamferDistancePytorch.git depoco/submodules/ChamferDistancePytorch \
+ && cd depoco/submodules/ChamferDistancePytorch/chamfer3D/ && pip3 install -U .
 
 WORKDIR /depoco/depoco
